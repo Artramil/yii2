@@ -2,11 +2,7 @@
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
     <ol class="carousel-indicators">
-
-
-
 <?php
-
 /* @var $this yii\web\View */
     $i=0;
     foreach ($model as $value){
@@ -20,7 +16,6 @@
     }
     ?>
   </ol>
-
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
   <?php
@@ -55,26 +50,27 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-   
-   <!-- <div>
+
+
         <div class="row">
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                <img src="<?=$value['urlImage']?>" alt="">
+        <?php
+            foreach ($products as $values){?>
+            <div class="col-sm-6 col-md-4 cards">
+            <div class="thumbnail">
+                <img src="<?=$values->imgUrl?>" alt="">
                 <div class="caption">
-                    <h3><?=$value['name']?></h3>
-                    <p> <?=$value['description']?></p>
-                   
+                    <h3 class="product-name"><?=$values->name?></h3>
+                    <p><?=$values->description?></p>
+                    <p><?=$values->category->name?></p>
+                    
                 </div>
-                </div>
+            </div> 
             </div>
+        <?php    
+            }
+        ?>
+            
         </div>
-    </div> -->
-    
-    <?php
-    //var_dump($value);
-    //echo "<br>";
-
-
+<?php
 $this->title = 'My Yii Application';
 ?>

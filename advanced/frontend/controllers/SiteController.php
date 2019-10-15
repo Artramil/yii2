@@ -15,6 +15,7 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use common\models\Newproducts;
+use common\models\Products;
 
 /**
  * Site controller
@@ -76,7 +77,11 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $model=Newproducts::find()->all();
-        return $this->render('index', ['model'=>$model]);
+        $products= Products::find()
+        ->joinWith('category')
+        ->joinWith('discaunt')->All();
+        return $this->render('index', ['model'=>$model, 'products'=>$products]);
+        
     }
 
     /**
